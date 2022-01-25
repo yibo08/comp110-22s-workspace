@@ -38,6 +38,9 @@ if char == word[4]:
     inst = inst + 1
 
 if inst > 0:
-    print(str(inst) + " instances for " + char + " found in " + word)
+    if inst == 1:
+        print(str(inst) + " instance for " + char + " found in " + word)
+    if inst > 1:
+        print(str(inst) + " instances for " + char + " found in " + word)
 else:
     print("No instances of " + char + " found in " + word)
