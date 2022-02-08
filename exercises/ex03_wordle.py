@@ -52,7 +52,6 @@ def main() -> None:
         print(emojified(guess_word, secret_word))
         if guess_word == secret_word:
             print(f"You won in {turn_number}/6 turns!")
-            quit()
         turn_number += 1
     print("X/6 - Sorry, try again tomorrow!")
 
