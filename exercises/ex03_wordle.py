@@ -38,7 +38,7 @@ def input_guess(length: int) -> str:
     """To test whether the length is correct and ask for a correct one."""
     length_word: str = input(f"Enter a {length} character word:")
     while len(length_word) != length:
-        length_word: str = input(f"That wasn't {length} chars! Try again:")
+        length_word = input(f"That wasn't {length} chars! Try again:")
     return length_word
 
 
@@ -46,14 +46,17 @@ def main() -> None:
     """The entrypoint of the program and main game loop."""
     turn_number: int = 1
     secret_word: str = "codes"
-    while turn_number < 7:
+    final_result: bool = False
+    while turn_number < 7 and final_result is False:
         print(f"=== Turn {turn_number}/6 ===")
         guess_word: str = input_guess(5)
         print(emojified(guess_word, secret_word))
         if guess_word == secret_word:
             print(f"You won in {turn_number}/6 turns!")
+            final_result = True
         turn_number += 1
-    print("X/6 - Sorry, try again tomorrow!")
+    if turn_number >= 7:
+        print("X/6 - Sorry, try again tomorrow!")
 
 
 if __name__ == "__main__":
