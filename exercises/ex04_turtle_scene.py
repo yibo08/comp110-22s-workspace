@@ -12,31 +12,9 @@ def main() -> None:
     tracer(0, 0)
     scene: Turtle = Turtle()
     screensize(800, 600, "black")
-    x: float = 0.0
-    y: float = 0.0
-    w: float = 0.0
-    i: int = 0
-
-    star_amount: int = randint(80, 150)
-    while i < star_amount:
-        x = uniform(-700, 700)
-        y = uniform(-500, 500)
-        w = uniform(15, 50)
-        draw_star(scene, x, y, w)
-        i += 1
-    i = 0
-
+    star_generator(scene)
     draw_moon(scene, -500, 300)
-
-    cloud_amount: int = randint(3, 8)
-    while i < cloud_amount:
-        x = uniform(-700, 700)
-        y = uniform(-50, 500)
-        w = uniform(15, 50)
-        draw_cloud(scene, x, y, w)
-        i += 1
-    i = 0
-
+    cloud_generator(scene)
     draw_milky(scene, 600, -400)
     update()
     done()
@@ -111,6 +89,38 @@ def draw_milky(milky: Turtle, x: float, y: float) -> None:
     milky.begin_fill()
     milky.circle(1200, 650)
     milky.end_fill()
+
+
+def star_generator(scene: Turtle) -> None:
+    """Generate Star."""
+    x: float = 0.0
+    y: float = 0.0
+    w: float = 0.0
+    i: int = 0
+    star_amount: int = randint(80, 150)
+    while i < star_amount:
+        x = uniform(-700, 700)
+        y = uniform(-500, 500)
+        w = uniform(15, 50)
+        draw_star(scene, x, y, w)
+        i += 1
+    i = 0
+
+
+def cloud_generator(scene: Turtle) -> None:
+    """Generate Could."""
+    x: float = 0.0
+    y: float = 0.0
+    w: float = 0.0
+    i: int = 0
+    cloud_amount: int = randint(3, 8)
+    while i < cloud_amount:
+        x = uniform(-700, 700)
+        y = uniform(-50, 500)
+        w = uniform(15, 50)
+        draw_cloud(scene, x, y, w)
+        i += 1
+    i = 0
 
 
 if __name__ == "__main__":
