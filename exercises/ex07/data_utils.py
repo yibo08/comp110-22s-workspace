@@ -43,13 +43,16 @@ def head(table: dict[str, list[str]], number: int) -> dict[str, list[str]]:
     result: dict[str, list[str]] = {}
     for column in table:
         n_values: list[str] = []
-        i = 0
         table_ls: list[str] = table[column]
-        while i < number:
-            item = table_ls[i]
-            n_values.append(item)
-            i += 1
-        result[column] = n_values
+        if number >= len(table_ls):
+            result[column] = table_ls
+        else:
+            i = 0
+            while i < number:
+                item = table_ls[i]
+                n_values.append(item)
+                i += 1
+            result[column] = n_values
     return result
 
 
@@ -61,7 +64,7 @@ def select(table: dict[str, list[str]], copy_column: list[str]) -> dict[str, lis
     return result
 
 
-def concat(table_1: dict[str, list[str]], table_2: dict[str, list[str]]):
+def concat(table_1: dict[str, list[str]], table_2: dict[str, list[str]]) -> dict[str, list[str]]:
     """Concat two column-based tables into one."""
     result: dict[str, list[str]] = {}
     for column in table_1:
